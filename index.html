@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handwriting Recognition Demo</title>
+    <link rel="stylesheet" href="./index.css">
+    <script type="text/javascript" src="./handwritingCanvas.js" defer></script>
+    <script type="text/javascript" src="./index.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="board">
+
+            <canvas id="can" width="500" height="400"></canvas>
+
+            <div class="result">
+                <img src="./img/0.jpg" alt="">
+            </div>
+            
+        </div>
+
+        <div class="divButton">
+            <button class="buttonCustom" id="recognize-btn">Recognize</button>
+            <button class="buttonCustom" id="clear-btn">Clear</button>
+            <button class="buttonCustom" id="undo-btn">Undo</button>
+            <button class="buttonCustom" id="redo-btn">Redo</button>
+            <button class="buttonCustom" id="history-btn">history</button>
+            <button class="buttonCustom" id="clear-history-btn">clear history</button>
+        </div>
+
+        <div class="divHistory">
+            <div class="divHistory-titleBar"> <img src="./img/history_clock.png" alt=""> </div>
+            <div class="divHistory-list"></div>
+        </div>
+    </div>  
+</body>
+</html>
