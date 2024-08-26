@@ -203,7 +203,7 @@
                             options.height || this.width || undefined,
                     },
                     ink: trace,
-                    language: options.language || "zh_TW",
+                    language: options.language || "en",
                 },
             ],
         });

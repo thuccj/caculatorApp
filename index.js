@@ -158,7 +158,7 @@ function autoCalculator(can1) {
         timeoutId = setTimeout(() => { 
             console.log(auto_calculator);
             if (auto_calculator) { can1.recognize() }
-        }, 2000);
+        }, 1500);
     }
 
     function stopDrawing() {
