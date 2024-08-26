@@ -1,0 +1,168 @@
+:root {
+    --color: black;
+    --toolcolor: #808080;
+    --backgroundcolor: #26282c;
+    --secondcolor: #2c918e;
+    --color-accent: #fffff;
+    --shadow-dark: #18191b;
+    --shadow-light: #34373d;
+    --gradient-dark: #292b2f;
+    --gradient-light: #222428;
+    --highlight: #ff6f00;
+  }
+  
+  
+  body {
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    color: white;
+    min-height: 100vh;
+    background: #d9d9d9;
+  }
+  
+  .calculatorWrap {
+    border-radius: 30px;
+    box-shadow: 0px 0px 7px rgba(0,0,0,0.2);
+  }
+  
+  .calculator {
+    position: relative;
+    padding: 20px;
+    padding-top: 60px;
+    border-radius: 25px;
+    width: 400px;
+    background-color: var(--backgroundcolor);
+  }
+  
+  .screenWrap {
+  }
+  #screen {
+    padding-top:0;
+    margin-top:-5px;
+  }
+  #screen2{
+    font-size: 1.5rem;
+    opacity:0.7;
+   padding-bottom:0;
+    font-weight:100;
+    
+  }
+  
+  .calculator-screen {
+    background-color: var(--backgroundcolor);
+    color: var(--color-accent);
+    border: none;
+    border-radius: 15px;
+    width: 100%;
+    padding: 0px 15px;
+    box-sizing: border-box;
+    text-align: right;
+    font-size: 4rem;
+  }
+  
+  .calculator-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 20px 3%;
+  }
+  
+  button {
+    color: var(--color-accent);
+    font-size: 2rem;
+    font-weight: 400;
+    border: none;
+    height: 60px;
+    border-radius: 20px;
+    background:var(--backgroundcolor);
+    box-shadow: 4px 4px 8px var(--shadow-dark),
+                -4px -4px 8px var(--shadow-light);
+  }
+  
+  button:hover {
+    box-shadow: 2px 2px 5px var(--shadow-dark),
+                -2px -2px 5px var(--shadow-light);
+  }
+  
+  button:active {
+    background: var(--backgroundcolor);
+    box-shadow: inset 2px 2px 5px var(--shadow-dark),
+                inset -2px -2px 5px var(--shadow-light);
+  }
+  
+  button.operator {
+    font-size: 2rem;
+    color: var(--highlight);
+  }
+  
+  button.equal-sign {
+    grid-column: span 4;
+    color: var(--color-accent);
+    font-size: 1.5rem;
+  }
+  
+  button.all-clear {
+    color: var(--color-accent);
+    font-size: 1.5rem;
+  }
+  #toggle-switch {
+  position: absolute;
+    border-radius:50px;
+    right:10px;
+    top:10px;
+  }
+  
+  
+  .toggle-switch {
+              position: relative;
+              width: 60px;
+              display: inline-block;
+              height: 34px;
+          }
+  
+          .toggle-switch input {
+              opacity: 0;
+              width: 0;
+              height: 0;
+          }
+  
+          .slider {
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+                box-shadow: inset 4px 4px 10px #bebebe,
+                inset -4px -4px 10px #d9d9d9;
+          }
+  
+          .slider:before {
+              position: absolute;
+              content: "";
+              height: 26px;
+              width: 26px;
+              left: 4px;
+              bottom: 4px;
+              background-color: white;
+              transition:transform .4s ease-in-out;
+          }
+  
+          input:checked + .slider {
+          }
+  
+          input:checked + .slider:before {
+              transform: translateX(26px);
+            background-color: #26282c;
+          }
+  
+          .slider.round {
+              border-radius: 34px;
+          }
+  
+          .slider.round:before {
+              border-radius: 50%;
+          }
