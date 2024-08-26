@@ -124,3 +124,10 @@ body {
     box-shadow: #d6d6e7 0 3px 7px inset;
     transform: translateY(2px);
 }
+
+.ratio-auto-cal {
+    background: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+}

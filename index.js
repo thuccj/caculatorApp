@@ -1,3 +1,4 @@
+var auto_calculator = false;
 document.addEventListener("DOMContentLoaded", () => {
     // Initialize the handwriting canvas object
     var can1 = new handwriting.Canvas(document.getElementById("can"));
@@ -13,10 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (err) { console.error(err) } 
         else { calculatorNumber(data) }
     });
-    
+
+
+
     // Add event listeners to buttons
     document.querySelector("#recognize-btn").addEventListener('click', () => { can1.recognize() });
-    document.querySelector("#clear-btn").addEventListener('click', () => { can1.erase() });
+    document.querySelector("#clear-btn").addEventListener('click', () => { 
+        can1.erase();
+        document.querySelector(".result").innerHTML = `<img src="./img/0.jpg" alt="">`;
+    });
     document.querySelector("#undo-btn").addEventListener('click', () => { can1.undo() });
     document.querySelector("#redo-btn").addEventListener('click', () => { can1.redo() });
     document.querySelector('#history-btn').addEventListener('click', () => {
@@ -26,9 +32,16 @@ document.addEventListener("DOMContentLoaded", () => {
         divHistory_list.scrollTop = divHistory_list.scrollHeight;
     });
     document.querySelector('#clear-history-btn').addEventListener('click', () => { eraseCookie() });
+    document.querySelector('#auto-calculator-btn').addEventListener('click', () => { 
+        const ratioAutoCal = document.querySelector('.ratio-auto-cal');
+        auto_calculator = !auto_calculator;
+        ratioAutoCal.style.background = auto_calculator ? 'green' : 'red';
+    });
+
+
 
     getCookie();
-    // autoCalculator(can1);
+    autoCalculator(can1);
     
     // Optional: Enable undo and redo
     can1.set_Undo_Redo(true, true);
@@ -38,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function calculatorNumber(data) {
     const resultBoard = document.querySelector('.result');
-
+    console.log(123, data);
     try {
         const strCal = data[0];
         console.log('num:', strCal);
@@ -67,7 +80,7 @@ function calculatorNumber(data) {
 }
 
 function calculate(expression) {
-    expression = expression.replace(/x/g, '*').replace(/:/g, '/');
+    expression = expression.replace(/x/g, '*').replace(/:/g, '/').replace(/,/g, '.');
 
     let operators = expression.match(/[\%\+\-\*\/]/g);
     let numbers = expression.split(/[\%\+\-\*\/]/).map(Number);
@@ -118,38 +131,39 @@ function currentTime() {
 }
 
 function autoCalculator(can1) {
+    const canvas = document.querySelector('#can');
+    const ctx = canvas.getContext('2d');
     let isDrawing = false;
-    let stopDrawTimeout = null;
+    let timeoutId;
 
-    const canvasElement = document.getElementById("can");
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
 
-    // Add event listeners to detect drawing state
-    canvasElement.addEventListener("mousedown", handleMouseDown);
-    canvasElement.addEventListener("mousemove", handleMouseMove);
-    canvasElement.addEventListener("mouseup", handleMouseUp);
-    canvasElement.addEventListener("pointerdown", handleMouseDown);
-    canvasElement.addEventListener("pointermove", handleMouseMove);
-    canvasElement.addEventListener("pointerup", handleMouseUp);
-
-    function handleMouseDown(event) {
+    function startDrawing(event) {
         isDrawing = true;
-        clearTimeout(stopDrawTimeout);
+        ctx.beginPath();
+        ctx.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
     }
 
-    function handleMouseMove(event) {
-        if (isDrawing) {
-            clearTimeout(stopDrawTimeout);
-        }
+    function draw(event) {
+        if (!isDrawing) return;
+
+        ctx.lineTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+        ctx.stroke();
+
+        // Clear timeout cũ và bắt đầu timeout mới
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => { 
+            console.log(auto_calculator);
+            if (auto_calculator) { can1.recognize() }
+        }, 2000);
     }
 
-    function handleMouseUp(event) {
+    function stopDrawing() {
         isDrawing = false;
-        stopDrawTimeout = setTimeout(() => {
-            if (!isDrawing) {
-                console.log("User stopped drawing on the canvas");
-                can1.recognize();
-            }
-        }, 3000); // Dừng 2.5s xem có vẽ tiếp không 🤔
+        ctx.closePath();
     }
 }
 
