@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#recognize-btn").addEventListener('click', () => { can1.recognize() });
     document.querySelector("#clear-btn").addEventListener('click', () => { 
         can1.erase();
-        document.querySelector(".result").innerHTML = `<img src="./img/0.jpg" alt="">`;
+        document.querySelector(".result").innerHTML = `<img src="../static/img/0.jpg" alt="">`;
     });
     document.querySelector("#undo-btn").addEventListener('click', () => { can1.undo() });
     document.querySelector("#redo-btn").addEventListener('click', () => { can1.redo() });
@@ -61,7 +61,7 @@ function calculatorNumber(data) {
         resultBoard.innerHTML = '';
         result.forEach(char => {
             const imgCreate = document.createElement('img');
-            imgCreate.src = char != '.' ? `./img/${char}.jpg` : `./img/dot.jpg`;
+            imgCreate.src = char != '.' ? `../static/img/${char}.jpg` : `../static/img/dot.jpg`;
             resultBoard.appendChild(imgCreate);
         });
     }
@@ -69,7 +69,7 @@ function calculatorNumber(data) {
         resultBoard.innerHTML = '';
         const imgCreate = document.createElement('img');
         const spanCreate = document.createElement('span');
-        imgCreate.src = './img/not_solved.jpg';
+        imgCreate.src = '../static/img/not_solved.jpg';
         spanCreate.innerText = 'huh';
         imgCreate.className = 'not_solved';
         spanCreate.className = 'not_solved';

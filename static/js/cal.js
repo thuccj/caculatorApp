@@ -70,6 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
         updateDisplay();
     }
 
+    function delCalculator() {
+        const display = document.querySelector('.calculator-screen#screen');
+        calculator.displayValue = display.value.slice(0, -1);
+        updateDisplay();
+    }
+
     function updateDisplay() {
         const display = document.querySelector('.calculator-screen#screen');
         const historyDisplay = document.querySelector('.calculator-screen#screen2');
@@ -93,6 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (target.classList.contains('all-clear')) {
             resetCalculator();
+            return;
+        }
+
+        if (target.classList.contains('del')) {
+            delCalculator();
             return;
         }
 

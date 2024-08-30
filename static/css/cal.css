@@ -99,11 +99,12 @@
   }
   
   button.equal-sign {
-    grid-column: span 4;
+    grid-column: span 2;
     color: var(--color-accent);
     font-size: 1.5rem;
   }
   
+  button.del,
   button.all-clear {
     color: var(--color-accent);
     font-size: 1.5rem;
