@@ -15,21 +15,18 @@ document.addEventListener("DOMContentLoaded", () => {
         else { calculatorNumber(data) }
     });
 
-
-
     // Add event listeners to buttons
     document.querySelector("#recognize-btn").addEventListener('click', () => { can1.recognize() });
     document.querySelector("#clear-btn").addEventListener('click', () => { 
         can1.erase();
-        document.querySelector(".result").innerHTML = `<img src="../static/img/0.jpg" alt="">`;
+        document.querySelector(".result").innerHTML = `<img src="./static/img/0.jpg" alt="">`;
     });
     document.querySelector("#undo-btn").addEventListener('click', () => { can1.undo() });
     document.querySelector("#redo-btn").addEventListener('click', () => { can1.redo() });
     document.querySelector('#history-btn').addEventListener('click', () => {
         const divHistory = document.querySelector('.divHistory');
-        const divHistory_list = document.querySelector('.divHistory-list');
         divHistory.style.display = divHistory.style.display === 'none' || divHistory.style.display === '' ? 'block' : 'none';
-        divHistory_list.scrollTop = divHistory_list.scrollHeight;
+        scrollHistory();
     });
     document.querySelector('#clear-history-btn').addEventListener('click', () => { eraseCookie() });
     document.querySelector('#auto-calculator-btn').addEventListener('click', () => { 
@@ -61,7 +58,7 @@ function calculatorNumber(data) {
         resultBoard.innerHTML = '';
         result.forEach(char => {
             const imgCreate = document.createElement('img');
-            imgCreate.src = char != '.' ? `../static/img/${char}.jpg` : `../static/img/dot.jpg`;
+            imgCreate.src = char != '.' ? `./static/img/${char}.jpg` : `./static/img/dot.jpg`;
             resultBoard.appendChild(imgCreate);
         });
     }
@@ -69,7 +66,7 @@ function calculatorNumber(data) {
         resultBoard.innerHTML = '';
         const imgCreate = document.createElement('img');
         const spanCreate = document.createElement('span');
-        imgCreate.src = '../static/img/not_solved.jpg';
+        imgCreate.src = './static/img/not_solved.jpg';
         spanCreate.innerText = 'huh';
         imgCreate.className = 'not_solved';
         spanCreate.className = 'not_solved';
@@ -113,6 +110,8 @@ function calculate(expression) {
     // result = Number(result) === result && result % 1 === 0 ? result : JSON.stringify(Number(result).toFixed(3))
     setCookie({expression: expression, result: result});
     getCookie();
+    scrollHistory();
+
 
     return result;
 }
@@ -156,7 +155,6 @@ function autoCalculator(can1) {
         // Clear timeout cũ và bắt đầu timeout mới
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => { 
-            console.log(auto_calculator);
             if (auto_calculator) { can1.recognize() }
         }, 1500);
     }
@@ -166,6 +164,12 @@ function autoCalculator(can1) {
         ctx.closePath();
     }
 }
+
+function scrollHistory() {
+    const divHistory_list = document.querySelector('.divHistory-list');
+    divHistory_list.scrollTop = divHistory_list.scrollHeight;
+}
+
 
 
 // Set up cookie to save data history 🤔

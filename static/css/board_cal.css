@@ -25,14 +25,32 @@ body {
     font-size: 50px;
 }
 
+.divButton {
+    display: grid;
+    grid-template-columns: repeat(4, 195px);
+    gap: 5px;
+}
+
+.btnCancel {
+    width: 30px;
+    height: 30px;
+    background: url(https://cdn-icons-png.flaticon.com/512/2874/2874787.png) no-repeat;
+    background-size: 30px;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    cursor: pointer;
+}
+
 
 
 /* ---------------- div history calculator ---------------- */
 .divHistory {
     display: none;
-    width: 500px;
+    width: 800px;
     height: 150px;
-    /* background-color: red; */
     opacity: 0.2;
     position: absolute;
     top: 0;
@@ -50,13 +68,11 @@ body {
     height: 15%;
     display: flex;
     padding: 10px;
-    /* background-color: green; */
 }
 
 .divHistory-list{
     width: auto;
     height: 85%;
-    /* background-color: yellow; */
     overflow-y: scroll;
     padding: 10px;
     text-align: left;

@@ -4,18 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./static/css/cal.css" />
-    <script src="./static/js/cal.js"></script>
+    <link rel="stylesheet" href="./static/css/board_cal.css">
+    <link rel="stylesheet" href="./static/css/cal.css"/>
+
+    <script type="text/javascript" src="./static/js/board_cal.js" defer></script>
+    <script type="text/javascript" src="./static/js/handwritingCanvas.js" defer></script>
+    <script src="./static/js/cal.js" defer></script>
 </head>
 <body>
-
     <div id="toggle-switch">
         <label class="toggle-switch">
             <input type="checkbox" id="themeToggle" />
             <span class="slider round"></span>
         </label>
     </div>
-
+    
     <div class="calculatorWrap">
         <div class="calculator">
             <div class="screenWrap">
@@ -23,7 +26,7 @@
                 <input type="text" class="calculator-screen" id="screen" disabled/>
             </div>
             <div class="calculator-keys">
-                <button></button>
+                <button class="btn_BoardCalculator"></button>
                 <button class="all-clear" value="all-clear">AC</button>
                 <button class="del" value="del">DEL</button>
                 <button class="operator" value="/">&divide;</button>
@@ -46,10 +49,30 @@
         </div>
     </div>
 
-    <div class="toBoard_cal">
-        <button>
-            <a href="./templates/board_calculator.html">board cal</a>
-        </button>
+    <div class="boardCalHid">
+        <div class="board">
+            <canvas id="can" width="800" height="400"></canvas>
+            <div class="result">
+                <img src="./static/img/0.jpg" alt="">
+            </div>
+        </div>
+
+        <div class="divButton">
+            <button class="buttonCustom" id="recognize-btn">Calculator</button>
+            <button class="buttonCustom" id="clear-btn">Clear</button>
+            <button class="buttonCustom" id="undo-btn">Undo</button>
+            <button class="buttonCustom" id="redo-btn">Redo</button>
+            <button class="buttonCustom" id="history-btn">History</button>
+            <button class="buttonCustom" id="clear-history-btn">Clear history</button>
+            <button class="buttonCustom" id="auto-calculator-btn">Auto calculator<span class="ratio-auto-cal"></span></button>
+        </div>
+
+        <div class="divHistory">
+            <div class="divHistory-titleBar"> <img src="./static/img/history_clock.png" alt=""> </div>
+            <div class="divHistory-list"></div>
+        </div>
+
+        <button class="btnCancel"></button>
     </div>
 </body>
 </html>

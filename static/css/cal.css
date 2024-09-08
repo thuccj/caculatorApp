@@ -9,49 +9,49 @@
     --gradient-dark: #292b2f;
     --gradient-light: #222428;
     --highlight: #ff6f00;
-  }
-  
-  
-  body {
+}
+
+
+body {
     letter-spacing: 1px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
-    color: white;
     min-height: 100vh;
-    background: #d9d9d9;
-  }
-  
-  .calculatorWrap {
+}
+
+.calculatorWrap {
     border-radius: 30px;
-    box-shadow: 0px 0px 7px rgba(0,0,0,0.2);
-  }
-  
-  .calculator {
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.calculator {
     position: relative;
     padding: 20px;
     padding-top: 60px;
     border-radius: 25px;
     width: 400px;
     background-color: var(--backgroundcolor);
-  }
-  
-  .screenWrap {
-  }
-  #screen {
-    padding-top:0;
-    margin-top:-5px;
-  }
-  #screen2{
+}
+
+.screenWrap {}
+
+#screen {
+    padding-top: 0;
+    margin-top: -5px;
+}
+
+#screen2 {
     font-size: 1.5rem;
-    opacity:0.7;
-   padding-bottom:0;
-    font-weight:100;
-    
-  }
-  
-  .calculator-screen {
+    opacity: 0.7;
+    padding-bottom: 0;
+    font-weight: 100;
+
+}
+
+.calculator-screen {
     background-color: var(--backgroundcolor);
     color: var(--color-accent);
     border: none;
@@ -61,109 +61,128 @@
     box-sizing: border-box;
     text-align: right;
     font-size: 4rem;
-  }
-  
-  .calculator-keys {
+}
+
+.calculator-keys {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
     padding: 20px 3%;
-  }
-  
-  button {
+}
+
+.calculator-keys button {
     color: var(--color-accent);
     font-size: 2rem;
     font-weight: 400;
     border: none;
     height: 60px;
     border-radius: 20px;
-    background:var(--backgroundcolor);
+    background: var(--backgroundcolor);
     box-shadow: 4px 4px 8px var(--shadow-dark),
-                -4px -4px 8px var(--shadow-light);
-  }
-  
-  button:hover {
+        -4px -4px 8px var(--shadow-light);
+}
+
+.calculator-keys button:hover {
     box-shadow: 2px 2px 5px var(--shadow-dark),
-                -2px -2px 5px var(--shadow-light);
-  }
-  
-  button:active {
+        -2px -2px 5px var(--shadow-light);
+}
+
+.calculator-keys button:active {
     background: var(--backgroundcolor);
     box-shadow: inset 2px 2px 5px var(--shadow-dark),
-                inset -2px -2px 5px var(--shadow-light);
-  }
-  
-  button.operator {
+        inset -2px -2px 5px var(--shadow-light);
+}
+
+button.operator {
     font-size: 2rem;
     color: var(--highlight);
-  }
-  
-  button.equal-sign {
+}
+
+button.equal-sign {
     grid-column: span 2;
     color: var(--color-accent);
     font-size: 1.5rem;
-  }
-  
-  button.del,
-  button.all-clear {
+}
+
+button.del,
+button.all-clear {
     color: var(--color-accent);
     font-size: 1.5rem;
-  }
-  #toggle-switch {
-  position: absolute;
-    border-radius:50px;
-    right:10px;
-    top:10px;
-  }
-  
-  
-  .toggle-switch {
-              position: relative;
-              width: 60px;
-              display: inline-block;
-              height: 34px;
-          }
-  
-          .toggle-switch input {
-              opacity: 0;
-              width: 0;
-              height: 0;
-          }
-  
-          .slider {
-              position: absolute;
-              cursor: pointer;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
-                box-shadow: inset 4px 4px 10px #bebebe,
-                inset -4px -4px 10px #d9d9d9;
-          }
-  
-          .slider:before {
-              position: absolute;
-              content: "";
-              height: 26px;
-              width: 26px;
-              left: 4px;
-              bottom: 4px;
-              background-color: white;
-              transition:transform .4s ease-in-out;
-          }
-  
-          input:checked + .slider {
-          }
-  
-          input:checked + .slider:before {
-              transform: translateX(26px);
-            background-color: #26282c;
-          }
-  
-          .slider.round {
-              border-radius: 34px;
-          }
-  
-          .slider.round:before {
-              border-radius: 50%;
-          }
+}
+
+#toggle-switch {
+    position: absolute;
+    border-radius: 50px;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.toggle-switch {
+    position: relative;
+    width: 60px;
+    display: inline-block;
+    height: 34px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 4px 4px 10px #bebebe,
+        inset -4px -4px 10px #d9d9d9;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: transform .4s ease-in-out;
+}
+
+input:checked+.slider {}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+    background-color: #26282c;
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.btn_BoardCalculator {
+    background: url(https://cdn-icons-png.flaticon.com/512/10104/10104459.png) no-repeat !important;
+    background-size: 60px !important;
+}
+
+.boardCalHid {
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 1;
+    position: absolute;
+    display: none;
+}

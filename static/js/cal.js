@@ -159,4 +159,18 @@ document.addEventListener('DOMContentLoaded', () => {
             root.style.setProperty(key, theme[key]);
         }
     }
+
+
+    
+    const btn_BoardCalculator = document.querySelector('.btn_BoardCalculator');
+    const boardCalHid = document.querySelector('.boardCalHid');
+    const btnCancel = document.querySelector('.btnCancel');
+
+    btn_BoardCalculator.addEventListener('click', () => {
+        boardCalHid.style.display = 'block';
+    })
+
+    btnCancel.addEventListener('click', () => {
+        boardCalHid.style.display = '';
+    })
 });
