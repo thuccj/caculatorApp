@@ -174,7 +174,7 @@ input:checked+.slider:before {
 }
 
 .btn_BoardCalculator {
-    background: url(https://cdn-icons-png.flaticon.com/512/10104/10104459.png) no-repeat !important;
+    background: url(../img/calculate.png) no-repeat !important;
     background-size: 60px !important;
 }
 
@@ -185,4 +185,8 @@ input:checked+.slider:before {
     z-index: 1;
     position: absolute;
     display: none;
+}
+
+.hint-img {
+    width: 25px;
 }

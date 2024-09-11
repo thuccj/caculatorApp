@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Add event listeners to buttons
-    document.querySelector("#recognize-btn").addEventListener('click', () => { can1.recognize() });
+    document.querySelector("#calculate-btn").addEventListener('click', () => { can1.recognize() });
     document.querySelector("#clear-btn").addEventListener('click', () => { 
         can1.erase();
         document.querySelector(".result").innerHTML = `<img src="./static/img/0.jpg" alt="">`;
@@ -116,6 +116,7 @@ function calculate(expression) {
     return result;
 }
 
+// ---------- Get current time 👌 ---------- 
 function currentTime() {
     let now = new Date();
     let year = now.getFullYear();
@@ -129,6 +130,7 @@ function currentTime() {
     return `${year}${month}${day}${hours}${minutes}${seconds}${milliseconds}`;
 }
 
+// ---------- Auto calculate 👌 ---------- 
 function autoCalculator(can1) {
     const canvas = document.querySelector('#can');
     const ctx = canvas.getContext('2d');
@@ -165,6 +167,7 @@ function autoCalculator(can1) {
     }
 }
 
+// ---------- Scroll to the data nearest 👌 ---------- 
 function scrollHistory() {
     const divHistory_list = document.querySelector('.divHistory-list');
     divHistory_list.scrollTop = divHistory_list.scrollHeight;
@@ -172,7 +175,7 @@ function scrollHistory() {
 
 
 
-// Set up cookie to save data history 🤔
+// ---------- Set up cookie to save data history 👌 ---------- 
 function setCookie(value) {
     document.cookie = `${currentTime()}=${JSON.stringify(value)}`;
 }

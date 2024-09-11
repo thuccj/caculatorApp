@@ -34,7 +34,7 @@ body {
 .btnCancel {
     width: 30px;
     height: 30px;
-    background: url(https://cdn-icons-png.flaticon.com/512/2874/2874787.png) no-repeat;
+    background: url(../img/cancel.png) no-repeat;
     background-size: 30px;
     border: none;
     position: absolute;

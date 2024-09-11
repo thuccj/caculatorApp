@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    
+    // ------------------ Button orther events (1) ------------------
     const btn_BoardCalculator = document.querySelector('.btn_BoardCalculator');
     const boardCalHid = document.querySelector('.boardCalHid');
     const btnCancel = document.querySelector('.btnCancel');
